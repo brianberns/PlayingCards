@@ -3,15 +3,6 @@
 /// A card has a rank and a suit.
 [<StructuredFormatDisplay("{String}")>]
 type Card =
-#if FABLE_COMPILER
-    {
-        /// Rank of this card.
-        Rank : Rank
-
-        /// Suit of this card.
-        Suit : Suit
-    }
-#else
     struct
 
         /// Rank of this card.
@@ -25,7 +16,6 @@ type Card =
             { Rank = rank; Suit = suit }
 
     end
-#endif
 
     /// Converts this card to a string.
     override this.ToString() =
@@ -40,11 +30,7 @@ module Card =
 
     /// Creates a card.
     let inline create rank suit =
-#if FABLE_COMPILER
-        { Rank = rank; Suit = suit }
-#else
         Card(rank, suit)
-#endif
 
     /// Number of cards in a deck.
     let numCards = Suit.numSuits * Rank.numRanks
