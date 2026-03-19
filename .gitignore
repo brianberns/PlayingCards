@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # FABLE output
 *.fs.js
+*.fs.js.map
